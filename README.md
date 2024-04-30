@@ -17,4 +17,5 @@ una frazione del dataset di arXiv.
 
 
 3. Non supervisionata:
-• usando solamente l’abstract e il titolo dell'articolo.
+
+	  • usando solamente l’abstract e il titolo dell'articolo.
