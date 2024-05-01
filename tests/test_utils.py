@@ -10,6 +10,6 @@ def test_remove():
     """
     nlp = spacy.load("en_core_web_md")
     assert remove('ciao_3', nlp) == 'ciao'
-    assert remove('mi chiamo Chiara! Tu come ti chiami?') == 'mi chiamo chiara tu come ti chiami'
-    assert remove('prova%$ https:/sito.com') == 'prova'
+    assert remove('mi chiamo Chiara! Tu come ti chiami?', nlp) == 'mi chiamo chiara tu come ti chiami'
+    assert remove('prova%$ https:/sito.com', nlp) == 'prova'
 
