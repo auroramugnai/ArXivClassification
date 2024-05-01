@@ -159,14 +159,15 @@ def remove(text, nlp):
 
 def print_confusion_matrices(mat, classes):
     """
-    Represent the confusion matrices.
+    Plot the confusion matrices normalizing on columns.
 
     Arguments
     ---------
        mat: confusion matrices given by the classification
     """
     num_mat = len(mat) # number of confusion matrices we want to plot
-    # find the number of cells in the grid that will contain the num_mat subplots
+    
+    # Find the number of cells in the grid that will contain the num_mat subplots.
     num_rows = ceil(np.sqrt(num_mat))
     num_cols = ceil(num_mat/num_rows)
     num_cells = num_rows*num_cols
@@ -175,7 +176,7 @@ def print_confusion_matrices(mat, classes):
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(20,20))
     axes = axes.ravel() # get flattened axes
 
-    # Iterate over the cells
+    # Iterate over the cells.
     for i in range(num_cells):
 
         if i < num_mat:
@@ -184,14 +185,14 @@ def print_confusion_matrices(mat, classes):
             disp.plot(ax=axes[i])
             disp.ax_.set_title(f'{classes[i]}')
 
-            # Only show x and y labels for the plots in the border
+            # Only show x and y labels for the plots in the border.
             first_i_of_last_row = num_rows*num_cols - num_cols
             if i < first_i_of_last_row - rest:
-                disp.ax_.set_xlabel('') # Do not set the x label
+                disp.ax_.set_xlabel('') # do not set the x label
 
             is_i_in_first_col = i%num_cols == 0
             if is_i_in_first_col == False:
-                disp.ax_.set_ylabel('') # Do not set the y label
+                disp.ax_.set_ylabel('') # do not set the y label
 
             disp.im_.colorbar.remove() # remove it to put it after
 
@@ -227,10 +228,10 @@ def ROC(classes, y_test, y_score):
         roc_auc[i] = auc(fpr[i], tpr[i])
 
 
-    # Sort the dictionary based on the area value
+    # Sort the dictionary based on the area value.
     roc_auc_ord = dict(sorted(roc_auc.items(), key=lambda item: item[1]))
 
-    # Take the sorted indices
+    # Take the sorted indices.
     indici = list(roc_auc_ord.keys())
 
     ##### Plot ROC curve #####
