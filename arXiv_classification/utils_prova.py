@@ -31,17 +31,27 @@
 #     filtered_text = filtered_text.replace("- ", "")  # join the words that are hyphenated
 #     return filtered_text
 
+from typing import Union
+
 import numpy as np
 
-from arXiv_classification.utils_prova import square
 
-def test_square():
-    """Unit test for the square() function.
+def square(value : Union[int, float, np.ndarray]) -> Union[float, np.ndarray]:
+    """Return the square of a given number.
+
+    This will accept any imput that support the ** operators, including
+    integers, floating point numbers and numpy array.
+
+    The function will raise a TypeError for incompatible types (e.g.,
+    string).
+
+    Arguments
+    ---------
+    value : number
+        The input value to square.
+
+    Return
+    ------
+        The square of the input value. : float
     """
-    assert square(2.) == 4.
-    assert square(-2.) == 4.
-    assert square(0.) == 0.
-    assert square(2) == 4
-    assert square(-2) == 4
-    assert square(0) == 0
-    assert np.allclose(square(np.ones(100)), np.ones(100))
+    return value**2.
