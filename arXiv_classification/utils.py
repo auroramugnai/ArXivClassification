@@ -78,7 +78,7 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     return dict_counts
 
 
-def run_model_one(pipeline, X_train, X_test, y_train, y_test):
+def run_model_one(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
@@ -102,7 +102,7 @@ def run_model_one(pipeline, X_train, X_test, y_train, y_test):
     return y_pred
 
 
-def run_model_multi(pipeline, X_train, X_test, y_train, y_test):
+def run_model_multi(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
@@ -130,7 +130,7 @@ def run_model_multi(pipeline, X_train, X_test, y_train, y_test):
     return y_pred, mat
 
 
-def remove(text, nlp):
+def remove(text: pd.Series, nlp: spacy.lang.en.English) -> pd.Series:
     """
     After tokenizing the text, remove punctuation and other characters.
 
@@ -157,7 +157,7 @@ def remove(text, nlp):
     return filtered_text
 
 
-def print_confusion_matrices(mat, classes):
+def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     """
     Plot the confusion matrices normalizing on columns.
 
@@ -205,7 +205,7 @@ def print_confusion_matrices(mat, classes):
     return
 
 
-def ROC(classes, y_test, y_score):
+def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     """
     Plot the ROC curves and compute their areas.
 
@@ -259,11 +259,11 @@ def ROC(classes, y_test, y_score):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic curves')
-    plt.legend(loc="lower right", fontsize='6', aplha=0.5)
+    plt.legend(loc="lower right", fontsize='6', framealpha=0.5)
     return
 
 
-def extract_kws(TEXT, kw_model, seed, max_n_grams=1):
+def extract_kws(TEXT: pd.Series, kw_model: keybert._model.KeyBERT, seed: pd.Series, max_n_grams=1) -> pd.Series:
     """
     Extract a list of 4 keywords for each input text.
 
