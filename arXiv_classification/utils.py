@@ -73,7 +73,8 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     dict_counts = dict([(v, c) for v, c in zip(names, counts)])
 
     # Plot.
-    df_counts.plot.bar(x=col, y='counts', title=f"df-{col}", figsize=(20,5))
+    df_counts.plot.bar(x=col, y='counts', 
+                       color='r', figsize=(20,5))
     return dict_counts
 
 
