@@ -3,7 +3,7 @@ import re
 import en_core_web_md
 import spacy
 
-from arXiv_classification.utils_prova import remove
+from arXiv_classification.utils import remove
 
 def test_remove():
     """Unit test for the remove() function.
