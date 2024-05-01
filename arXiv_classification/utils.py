@@ -235,7 +235,7 @@ def ROC(classes, y_test, y_score):
     indici = list(roc_auc_ord.keys())
 
     ##### Plot ROC curve #####
-    fig = plt.figure(figsize=(10,10))
+    fig = plt.figure(figsize=(7,7))
     ax = fig.add_subplot(111)
     cm = plt.get_cmap('gist_rainbow')
     ax.set_prop_cycle('color', [cm(1.*i/n_classes) for i in range(n_classes)])
@@ -259,7 +259,7 @@ def ROC(classes, y_test, y_score):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic curves')
-    plt.legend(loc="lower right", fontsize='6')
+    plt.legend(loc="lower right", fontsize='6', aplha=0.5)
     return
 
 
