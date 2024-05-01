@@ -1,11 +1,6 @@
 import re
 
-import en_core_web_sm
-import spacy
-
-nlp = spacy.load("en_core_web_sm")
-
-def remove(text):
+def remove(text, nlp):
     """
     After tokenizing the text, remove punctuation and other characters.
 
