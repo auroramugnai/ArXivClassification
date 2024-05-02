@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import normalize
-from sklearn.metrics import  roc_curve, ConfusionMatrixDisplay, multilabel_confusion_matrix, auc
+from sklearn.metrics import roc_curve, ConfusionMatrixDisplay, \
+                            multilabel_confusion_matrix, auc
 
 # Modules to import only for type checking.
 if TYPE_CHECKING:
@@ -20,11 +21,11 @@ def is_string_series(s: pd.Series) -> bool:
     """Checks whether s series contains only strings.
     """
     if isinstance(s.dtype, pd.StringDtype):
-        # The series was explicitly created as a string series (Pandas>=1.0.0).
+        # String series.
         return True
 
     elif s.dtype == 'object':
-        # Object series, check each value.
+        # Object series --> must check each value.
         return all((v is None) or isinstance(v, str) for v in s)
 
     else:
@@ -86,54 +87,39 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     return dict_counts
 
 
-def run_model_one(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
-    """
-    Execute the fit and prediction for the classification using the
-    defined SVM_Pipeline, that vectorize and classify the data.
-
-    Arguments
-    ---------
-       pipeline: defined Pipeline
-       X_train: train features
-       X_test: test features
-       y_train: numpy.ndarray, train labels
-       y_test: numpy.ndarray, test labels
-
-    Returns
-    -------
-       y_pred: predictions of the test data
-    """
-    # Fit of the train data using the pipeline.
-    pipeline.fit(X_train, y_train)
-    # Prediction on the test data.
-    y_pred = pipeline.predict(X_test)
-    return y_pred
-
-
-def run_model_multi(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
+def run_model(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, 
+              y_train: np.ndarray, y_test: np.ndarray, multilabel: bool) -> np.ndarray:
     """
     Fit the data and predict a classification.
 
     Arguments
     ---------
-       pipeline: defined Pipeline
-       X_train: train features
-       X_test: test features
-       y_train: numpy.ndarray, train labels
-       y_test: numpy.ndarray, test labels
+       pipeline: defined Pipeline.
+       X_train: train features.
+       X_test: test features.
+       y_train: numpy.ndarray, train labels.
+       y_test: numpy.ndarray, test labels.
+       multilabel: bool, True if the prediction is multilabel,
+                         False otherwise.
 
     Returns
     -------
-       y_pred: predictions of the test data
-       mat: confusion matrices
+       y_pred: predictions of the test data.
+       mat: confusion matrices.
     """
     # Fit of the train data using the pipeline.
     pipeline.fit(X_train, y_train)
     # Prediction on the test data.
     y_pred = pipeline.predict(X_test)
-    # Compute the confusion matrices.
-    mat = multilabel_confusion_matrix(y_test, y_pred)
-    return y_pred, mat
+
+    if multilabel:
+        # Compute the confusion matrices.
+        mat = multilabel_confusion_matrix(y_test, y_pred)
+        return y_pred, mat
+        
+    else:
+        return y_pred
+    
 
     
 def remove(text: pd.Series, nlp: type) -> pd.Series:
