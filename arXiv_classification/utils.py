@@ -144,8 +144,9 @@ def remove(text: pd.Series, nlp: type) -> pd.Series:
     filtered_text = [word for word in tokens if not any(bad in word for bad in B)] # filtered_text must be a list of words
     # Remove the numeric characters.
     filtered_text = " ".join(c for c in filtered_text if c.isalpha() or c.isspace()) 
+    filtered_text = filtered_text.replace("- ", "")  # join the words that are interrupted
     filtered_text = re.sub('(?:\s)http[^, ]*', '', filtered_text) # remove the words that begin with http (filtered_text must be a string)
-    filtered_text = filtered_text.replace("- ", "")  # join the words that are hyphenated
+    
     return filtered_text
 
 
