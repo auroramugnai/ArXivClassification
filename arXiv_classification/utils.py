@@ -130,7 +130,7 @@ def run_model_multi(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_tra
     return y_pred, mat
 
     
-def remove(text: pd.Series, nlp: spacy.lang.en.English) -> pd.Series:
+def remove(text: pd.Series, nlp: type) -> pd.Series:
     """
     After tokenizing the text, remove punctuation and other characters.
 
