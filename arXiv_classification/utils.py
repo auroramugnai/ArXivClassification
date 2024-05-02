@@ -263,7 +263,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     return
 
 
-def extract_kws(TEXT: pd.Series, kw_model: keybert._model.KeyBERT, seed: pd.Series, max_n_grams=1) -> pd.Series:
+def extract_kws(TEXT: pd.Series, kw_model: type, seed: pd.Series, max_n_grams=1) -> pd.Series:
     """
     Extract a list of 4 keywords for each input text.
 
