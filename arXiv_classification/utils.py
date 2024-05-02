@@ -79,7 +79,6 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
                        color='r', figsize=(20,5))
     return dict_counts
 
-Pipeline = Union[Pipeline]
 
 def run_model_one(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
