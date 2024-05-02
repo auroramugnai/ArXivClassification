@@ -1,14 +1,20 @@
+from __future__ import annotations
+
 from math import ceil
 import re
+from __future__ import annotations
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import sklearn
-import spacy
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import normalize
 from sklearn.metrics import  roc_curve, ConfusionMatrixDisplay, multilabel_confusion_matrix, auc
+
+# Modules to import only for type checking.
+if TYPE_CHECKING:
+    import sklearn
+    from sklearn.pipeline import Pipeline
+    import spacy
 
 def is_string_series(s: pd.Series) -> bool:
     """Checks whether s series contains only strings.
