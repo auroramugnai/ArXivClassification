@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import spacy
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import normalize
 from sklearn.metrics import  roc_curve, ConfusionMatrixDisplay, multilabel_confusion_matrix, auc
 
