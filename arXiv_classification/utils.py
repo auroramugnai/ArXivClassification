@@ -248,7 +248,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     indici = list(roc_auc_ord.keys())
 
     ##### Plot ROC curve #####
-    fig = plt.figure(figsize=(7,7))
+    fig = plt.figure(figsize=(10,8))
     ax = fig.add_subplot(111)
     cm = plt.get_cmap('gist_rainbow')
     ax.set_prop_cycle('color', [cm(1.*i/n_classes) for i in range(n_classes)])
