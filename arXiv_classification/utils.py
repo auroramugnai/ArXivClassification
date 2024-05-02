@@ -1,10 +1,11 @@
-import re
 from math import ceil
+import re
+from typing import TYPE_CHECKIN
 
-import spacy
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import spacy
 from sklearn.preprocessing import normalize
 from sklearn.metrics import  roc_curve, ConfusionMatrixDisplay, multilabel_confusion_matrix, auc
 
@@ -129,7 +130,9 @@ def run_model_multi(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_t
     mat = multilabel_confusion_matrix(y_test, y_pred)
     return y_pred, mat
 
-
+if TYPE_CHECKING:
+    from spacy import en_core_web_md
+    
 def remove(text: pd.Series, nlp: spacy.lang.en.English) -> pd.Series:
     """
     After tokenizing the text, remove punctuation and other characters.
