@@ -13,6 +13,7 @@ from sklearn.metrics import roc_curve, ConfusionMatrixDisplay, \
 
 # Modules to import only for type checking.
 if TYPE_CHECKING:
+    from keybert import KeyBERT
     import sklearn
     from sklearn.pipeline import Pipeline
     import spacy
@@ -276,7 +277,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     return
 
 
-def extract_kws(text: str, kw_model: type, seed: List[str]) -> List[str]:
+def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) -> List[str]:
     """
     Extract a list of 4 keywords for the input text using 
     some seed-keywords given by seed.
