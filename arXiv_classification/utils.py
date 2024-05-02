@@ -112,9 +112,7 @@ def run_model_one(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_tes
 
 def run_model_multi(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
-    Execute the fit and prediction for the classification using the
-    defined SVM_Pipeline, that vectorize and classify the data.
-    Compute the confusion matrices.
+    Fit the data and predict a classification.
 
     Arguments
     ---------
@@ -271,27 +269,27 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     return
 
 
-def extract_kws(TEXT: pd.Series, kw_model: type, seed: pd.Series, max_n_grams=1) -> pd.Series:
+def extract_kws(text: str, kw_model: type, seed: List[str]) -> List[str]:
     """
-    Extract a list of 4 keywords for each input text.
+    Extract a list of 4 keywords for the input text using 
+    some seed-keywords given by seed.
 
     Arguments
     ---------
-       TEXT: text from which to extract keywords
-       kw_model: KeyBERT model
-       seed: seed keywords that might guide the extraction of keywords
-             by steering the similarities towards the seeded keywords.
-       max_n_grams: lenght of the keyword
+       text: text from which to extract keywords.
+       kw_model: KeyBERT model.
+       seed: seed keywords that might guide the extraction of keywords.
 
     Returns
     -------
-       keywords: list of extracted keywords for each text
+       keywords: list of the 4 extracted keywords.
     """
-    data = kw_model.extract_keywords(docs=TEXT,
-                                      keyphrase_ngram_range=(1,max_n_grams),
-                                      seed_keywords = seed,
-                                      stop_words='english',
-                                      use_mmr=True,
-                                      top_n=4) # number of keywords
+    max_n_grams=1
+    data = kw_model.extract_keywords(docs=text,
+                                     keyphrase_ngram_range=(1,max_n_grams),
+                                     seed_keywords = seed,
+                                     stop_words='english',
+                                     use_mmr=True,
+                                     top_n=4) # number of keywords
     keywords = list(list(zip(*data))[0])
     return keywords
