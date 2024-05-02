@@ -262,7 +262,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic curves')
-    plt.legend(loc="lower right", fontsize='6', framealpha=0.5)
+    plt.legend(loc="lower right", fontsize='8', framealpha=0.5)
   
     return
 
