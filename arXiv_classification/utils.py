@@ -125,7 +125,7 @@ def run_model(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: p
     
 
     
-def remove(text: pd.Series, nlp: type) -> pd.Series:
+def text_cleaner(text: pd.Series, nlp: type) -> pd.Series:
     """
     After joining interrupted words and tokenizing the text, 
     lemmatize, remove bad words, special characters and punctuation.
