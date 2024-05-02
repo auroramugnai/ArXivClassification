@@ -10,7 +10,7 @@ def test_text_cleaner():
     """Unit test for the text_cleaner() function.
     """
     nlp = spacy.load("en_core_web_md")
-    assert text_cleaner('hi_3 !? Hi, 374189 h5i math{hi} hi%& https:/website.com GitHub.com hi-\n', nlp) == 'hi'
+    assert text_cleaner(''This is a test: h3llo $hello$ hello% test_hello www.website.com https://website hel- lo'', nlp) == 'test hello'
 
 
 def test_is_string_series():
