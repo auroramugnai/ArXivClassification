@@ -37,6 +37,7 @@ def categories_as_lists(df: pd.DataFrame) -> None:
     """
     if(is_string_series(df["category"]) == True):
         df["category"] =  df["category"].map(eval)
+      
     return
 
 
@@ -45,6 +46,7 @@ def categories_as_strings(df: pd.DataFrame) -> None:
     """
     if(is_string_series(df["category"]) == False):
         df["category"] =  df["category"].map(str)
+      
     return
 
 
@@ -84,6 +86,7 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     # Plot.
     df_counts.plot.bar(x=col, y='counts', 
                        color='r', figsize=(20,5))
+  
     return dict_counts
 
 
@@ -135,19 +138,24 @@ def remove(text: pd.Series, nlp: type) -> pd.Series:
     -------
        filtered_text: str, processed text
     """
-    # Apply the natural language Spacy model to the input text.
+    # Join interrupted words.
+    text = text.replace("- ", "")  
+  
+    # Tokenize.
     tokens = nlp(text)
-    # Transform to lowercase and then split the text.
-    tokens = [word.lemma_.lower().strip() if word.lemma_ != "-PRON-" else word.lower_ for word in tokens] 
-    # Remove the tokens that contains those strings
-    B = ["github.com", "http"] 
-    filtered_text = [word for word in tokens if not any(bad in word for bad in B)] # filtered_text must be a list of words
-    # Remove the numeric characters.
-    filtered_text = " ".join(c for c in filtered_text if c.isalpha() or c.isspace()) 
-    filtered_text = filtered_text.replace("- ", "")  # join the words that are interrupted
-    filtered_text = re.sub('(?:\s)http[^, ]*', '', filtered_text) # remove the words that begin with http (filtered_text must be a string)
     
-    return filtered_text
+    # Lemmatize and transform to lowercase.
+    #"-PRON-" is used as the lemma for all pronouns such as I, me, she, their ...
+    tokens = [word.lemma_.lower().strip() if word.lemma_ != "-PRON-" else word.lower_ for word in tokens] 
+    
+    # Remove the tokens that contain any string in badlist.
+    badlist = [".com", "http"] 
+    clean_tokens = [word for word in tokens if not any(bad in word for bad in badlist)]
+
+    # Drop characters that are not alphabet letters neither spaces.
+    clean_tokens = " ".join(c for c in clean_tokens if c.isalpha() or c.isspace()) 
+    
+    return clean_tokens
 
 
 def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
@@ -195,6 +203,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
 
     plt.subplots_adjust(wspace=0.15, hspace=0.1)
     fig.colorbar(disp.im_, ax=axes)
+  
     return
 
 
@@ -253,6 +262,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic curves')
     plt.legend(loc="lower right", fontsize='6', framealpha=0.5)
+  
     return
 
 
@@ -279,4 +289,5 @@ def extract_kws(text: str, kw_model: type, seed: List[str]) -> List[str]:
                                      use_mmr=True,
                                      top_n=4) # number of keywords
     keywords = list(list(zip(*data))[0])
+  
     return keywords
