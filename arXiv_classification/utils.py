@@ -127,7 +127,8 @@ def run_model(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: p
     
 def remove(text: pd.Series, nlp: type) -> pd.Series:
     """
-    After tokenizing the text, remove punctuation and other characters.
+    After joining interrupted words and tokenizing the text, 
+    lemmatize, remove bad words, special characters and punctuation.
 
     Arguments
     ---------
@@ -136,7 +137,7 @@ def remove(text: pd.Series, nlp: type) -> pd.Series:
 
     Returns
     -------
-       filtered_text: str, processed text
+       clean_tokens: str, processed text
     """
     # Join interrupted words.
     text = text.replace("- ", "")  
