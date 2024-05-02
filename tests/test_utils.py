@@ -10,7 +10,7 @@ def test_text_cleaner():
     """Unit test for the text_cleaner() function.
     """
     nlp = spacy.load("en_core_web_md")
-    assert text_cleaner(''This is a test: h3llo $hello$ hello% test_hello www.website.com https://website hel- lo'', nlp) == 'test hello'
+    assert text_cleaner('This is a test: h3llo $hello$ hello% test_hello www.website.com https://website hel- lo', nlp) == 'test hello'
 
 
 def test_is_string_series():
@@ -22,7 +22,10 @@ def test_is_string_series():
     series2 = pd.Series(data=d2, index=['a', 'b', 'c'])
     d3 = {'a': ['Hello', 'my'], 'b': ['name', 'is'], 'c': ['Pippo', '!']}
     series3 = pd.Series(data=d3, index=['a', 'b', 'c'])    
+    d4 = {'a': "['Hello', 'my']", 'b': "['name', 'is']", 'c': "['Pippo', '!']"}
+    series4 = pd.Series(data=d4, index=['a', 'b', 'c'])    
     assert is_string_series(series1) == True
     assert is_string_series(series2) == False
     assert is_string_series(series3) == False
+    assert is_string_series(series4) == True
     
