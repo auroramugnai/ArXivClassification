@@ -16,10 +16,13 @@ def test_remove():
 def test_is_string_series():
     """Unit test for is_string_series() function.
     """
-    d1 = {'a': 'hello', 'b': 'hi', 'c': 'python'}
+    d1 = {'a': 'This', 'b': 'is', 'c': 'Python'}
     series1 = pd.Series(data=d1, index=['a', 'b', 'c'])
-    d2 = {'a': 'hello', 'b': 'hi', 'c': 3}
-    series2 = pd.Series(data=d2, index=['a', 'b', 'c'])    
+    d2 = {'a': 'My age', 'b': 'is', 'c': 23}
+    series2 = pd.Series(data=d2, index=['a', 'b', 'c'])
+    d3 = {'a': ['Hello', 'my'], 'b': ['name', 'is'], 'c': ['Pippo', '!']}
+    series3 = pd.Series(data=d3, index=['a', 'b', 'c'])    
     assert is_string_series(series1) == True
     assert is_string_series(series2) == False
+    assert is_string_series(series3) == False
     
