@@ -78,7 +78,7 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     return dict_counts
 
 
-def run_model_one(pipeline: clss, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
+def run_model_one(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
@@ -102,7 +102,7 @@ def run_model_one(pipeline: clss, X_train: pd.Series, X_test: pd.Series, y_train
     return y_pred
 
 
-def run_model_multi(pipeline: clss, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
+def run_model_multi(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
