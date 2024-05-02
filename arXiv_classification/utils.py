@@ -4,7 +4,9 @@ import re
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import sklearn
 import spacy
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import normalize
 from sklearn.metrics import  roc_curve, ConfusionMatrixDisplay, multilabel_confusion_matrix, auc
 
@@ -77,8 +79,9 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
                        color='r', figsize=(20,5))
     return dict_counts
 
+Pipeline = Union[Pipeline]
 
-def run_model_one(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
+def run_model_one(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
@@ -102,7 +105,7 @@ def run_model_one(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_train
     return y_pred
 
 
-def run_model_multi(pipeline: type, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
+def run_model_multi(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, y_train: np.ndarray, y_test: np.ndarray) -> np.ndarray:
     """
     Execute the fit and prediction for the classification using the
     defined SVM_Pipeline, that vectorize and classify the data.
