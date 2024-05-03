@@ -10,6 +10,8 @@ Welcome to arXiv_classification's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. automodule:: utils
+   :members:
 
 
 Indices and tables
