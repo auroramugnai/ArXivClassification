@@ -91,9 +91,10 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     return dict_counts
 
 
-def run_model(pipeline: sklearn.pipeline.Pipeline, X_train: pd.Series, X_test: pd.Series, 
-              y_train: np.ndarray, y_test: np.ndarray, multilabel: bool) 
-              -> Union[Tuple[np.ndarray, np.ndarray], np.ndarray]:
+def run_model(pipeline: sklearn.pipeline.Pipeline, 
+              X_train: pd.Series, X_test: pd.Series, 
+              y_train: np.ndarray, y_test: np.ndarray, 
+              multilabel: bool) -> Union[Tuple[np.ndarray, np.ndarray], np.ndarray]:
     """
     Fit the data and predict a classification.
 
