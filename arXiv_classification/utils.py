@@ -295,7 +295,8 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
        keywords: list of the 4 extracted keywords.
     """
     max_n_grams = 1
-    if seed == '': seed = None # if there is no seed, do not use it below
+    if seed == ['']: # if there are no words to use as seeds
+        seed = None # switch off seed_keywords parameter below
     data = kw_model.extract_keywords(docs=text,
                                      keyphrase_ngram_range=(1, max_n_grams),
                                      seed_keywords = seed,
