@@ -16,6 +16,12 @@ def is_string_series(s: pd.Series) -> bool:
         # String series.
         return True
 
+    elif s.dtype == 'object':
+        # Object series --> must check each value.
+        return all((v is None) or isinstance(v, str) for v in s)
+
+    else:
+        return False
 
 def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
     """
