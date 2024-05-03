@@ -245,7 +245,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     roc_auc_ord = dict(sorted(roc_auc.items(), key=lambda item: item[1]))
 
     # Take the sorted indices.
-    indici = list(roc_auc_ord.keys())
+    indices = list(roc_auc_ord.keys())
 
     ##### Plot ROC curve #####
     fig = plt.figure(figsize=(10,8))
@@ -253,7 +253,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     cm = plt.get_cmap('gist_rainbow')
     ax.set_prop_cycle('color', [cm(1.*i/n_classes) for i in range(n_classes)])
 
-    for i in indici:
+    for i in indices:
         ax.plot(fpr[i], tpr[i], label='{0} (area = {1:0.2f})'
                                       ''.format(classes[i], roc_auc[i]))
 
@@ -272,7 +272,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic curves')
-    plt.legend(loc="lower right", fontsize='8', framealpha=0.5)
+    plt.legend(loc="lower right", fontsize='8', framealpha=0.5, ncol=2)
   
     return
 
