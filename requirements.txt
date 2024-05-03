@@ -3,4 +3,3 @@ numpy
 pandas
 sklearn
 spacy
-spacy download en_core_web_md
