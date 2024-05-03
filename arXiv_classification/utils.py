@@ -167,7 +167,7 @@ def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
     # Keep only characters that are alphabet letters or spaces.
     clean_tokens = " ".join(c for c in clean_tokens 
                             if c.isalpha() or c.isspace()) 
-  
+      
     return clean_tokens
 
 
@@ -220,7 +220,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     return
 
 
-def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray):
+def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     """
     Plot the ROC curves and compute their areas.
 
@@ -294,9 +294,10 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
     -------
        keywords: list of the 4 extracted keywords.
     """
-    max_n_grams=1
+    max_n_grams = 1
+    if seed == '': seed = None # if there is no seed, do not use it below
     data = kw_model.extract_keywords(docs=text,
-                                     keyphrase_ngram_range=(1,max_n_grams),
+                                     keyphrase_ngram_range=(1, max_n_grams),
                                      seed_keywords = seed,
                                      stop_words='english',
                                      use_mmr=True,
