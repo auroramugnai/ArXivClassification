@@ -4,7 +4,7 @@ import en_core_web_md
 import spacy
 import pandas as pd
 
-from arXiv_classification.utils_test import text_cleaner, is_string_series
+from arXiv_classification.utils import text_cleaner, is_string_series
 
 def test_text_cleaner():
     """Unit test for the text_cleaner() function.
