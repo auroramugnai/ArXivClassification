@@ -11,7 +11,7 @@ from sklearn.preprocessing import normalize
 from sklearn.metrics import roc_curve, ConfusionMatrixDisplay, \
                             multilabel_confusion_matrix, auc
 
-# Modules to import only for type checking.
+# Dependencies to import only for type checking.
 if TYPE_CHECKING:
     from keybert import KeyBERT
     import sklearn
@@ -19,7 +19,13 @@ if TYPE_CHECKING:
     import spacy
 
 def is_string_series(s: pd.Series) -> bool:
-    """Checks whether s series contains only strings.
+    """
+    Checks whether s series contains only strings.
+
+    Parameters
+    ----------
+    s : pd.Series
+        Series to be checked.
     """
     if isinstance(s.dtype, pd.StringDtype):
         # String series.
@@ -34,7 +40,13 @@ def is_string_series(s: pd.Series) -> bool:
 
 
 def categories_as_lists(df: pd.DataFrame) -> None:
-    """Ensures that the category column contains lists of strings.
+    """
+    Ensures that the category column contains lists of strings.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+         Dataframe to be checked.
     """
     if(is_string_series(df["category"]) == True):
         df["category"] =  df["category"].map(eval)
@@ -43,7 +55,13 @@ def categories_as_lists(df: pd.DataFrame) -> None:
 
 
 def categories_as_strings(df: pd.DataFrame) -> None:
-    """Ensures that the category column contains strings.
+    """
+    Ensures that the category column contains strings.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+         Dataframe to be checked.
     """
     if(is_string_series(df["category"]) == False):
         df["category"] =  df["category"].map(str)
@@ -57,15 +75,18 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     of the df dataframe and plots histograms. Everything is
     repeated for the exploded dataframe.
 
-    Arguments
+    Parameters
     ---------
-       df:  dataframe
-       col: string, name of the column whose elements must be counted
+    df : pd.DataFrame
+         Dataframe that contains the column col.
+    col : string
+          Name of the column whose elements must be counted.
 
     Returns
     -------
-       dict_counts: a dictionary whose keys are the names contained
-                    in col's lists and whose values are their occurrences
+    dict_counts : dictionary 
+                  Its keys are the names contained in col's lists 
+                  and its values are their occurrences.
     """
 
     # Before grouping check if we have strings.
@@ -84,7 +105,7 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     counts = df_counts['counts'].tolist()
     dict_counts = dict([(v, c) for v, c in zip(names, counts)])
 
-    # Plot.
+    # Plot the histogram.
     df_counts.plot.bar(x=col, y='counts', 
                        color='r', figsize=(20,5))
   
@@ -98,20 +119,29 @@ def run_model(pipeline: sklearn.pipeline.Pipeline,
     """
     Fit the data and predict a classification.
 
-    Arguments
+    Parameters
     ---------
-       pipeline: defined Pipeline.
-       X_train: train features.
-       X_test: test features.
-       y_train: numpy.ndarray, train labels.
-       y_test: numpy.ndarray, test labels.
-       multilabel: bool, True if the prediction is multilabel,
-                         False otherwise.
+    pipeline : sklearn.pipeline.Pipeline
+               Pipeline that perform the vectorization and the classification on
+               the given data.
+    X_train : pd.Series
+              Section of the data that are used as train features.
+    X_test : pd.Series
+             Section of the data that are used as test features.
+    y_train : numpy.ndarray
+              Section of the data that are used as train labels.
+    y_test : numpy.ndarray
+             Section of the data that are used as test labels.
+    multilabel : bool
+                 True if the prediction is multilabel,
+                 False otherwise.
 
     Returns
     -------
-       y_pred: predictions of the test data.
-       mat: confusion matrices.
+    y_pred : numpy.ndarray
+             Predictions of the test data.
+    mat : ???type???
+          Confusion matrices.
     """
     # Fit of the train data using the pipeline.
     pipeline.fit(X_train, y_train)
@@ -127,21 +157,23 @@ def run_model(pipeline: sklearn.pipeline.Pipeline,
         return y_pred
     
 
-    
 def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
     """
     After joining interrupted words and tokenizing the text, 
     lemmatize, remove bad words, special characters, punctuation
     and Spacy stopwords.
 
-    Arguments
+    Parameters
     ---------
-       text: str, text to be cleaned
-       nlp: Spacy model
+    text : string
+           Text to be cleaned.
+    nlp : spacy.lang.en.English
+          Spacy model.
 
     Returns
     -------
-       clean_tokens: str, cleaned text
+       clean_tokens : string
+                      Cleaned text.
     """
     # Join interrupted words.
     text = text.replace("- ", "")  
@@ -279,7 +311,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     return
 
 
-def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) -> List[str]:
+def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
     """
     Extract a list of 4 keywords for the input text using 
     some seed-keywords given by seed.
@@ -302,7 +334,7 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
                                      seed_keywords = seed,
                                      stop_words='english',
                                      use_mmr=True,
-                                     top_n=4) # number of keywords
+                                     top_n=top_n) # number of keywords
     keywords = list(list(zip(*data))[0])
   
     return keywords
