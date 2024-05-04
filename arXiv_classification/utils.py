@@ -140,7 +140,7 @@ def run_model(pipeline: sklearn.pipeline.Pipeline,
     -------
     y_pred : numpy.ndarray
              Predictions of the test data.
-    mat : ???type???
+    mat : numpy.ndarray
           Confusion matrices.
     """
     # Fit of the train data using the pipeline.
@@ -172,8 +172,8 @@ def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
 
     Returns
     -------
-       clean_tokens : string
-                      Cleaned text.
+    clean_tokens : string
+                   Cleaned text.
     """
     # Join interrupted words.
     text = text.replace("- ", "")  
@@ -207,9 +207,12 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     """
     Plot the confusion matrices normalizing on columns.
 
-    Arguments
+    Parameters
     ---------
-       mat: confusion matrices given by the classification
+    mat : np.ndarray
+          Confusion matrices given by the classification.
+    classes : np.ndarray
+              All the possible categories.      
     """
     num_mat = len(mat) # number of confusion matrices we want to plot
     
@@ -256,17 +259,19 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     """
     Plot the ROC curves and compute their areas.
 
-    Arguments
+    Parameters
     ---------
-       classes: numpy.ndarray with all the possible categories
-       X_train: train features
-       X_test: test features
-       y_train: train labels
+    classes : np.ndarray
+              All the possible categories.  
+    y_test : np.ndarray
+             Section of the data that are used as test labels.
+    y_score : np.ndarray
+              Decision function of X_test      
     """
 
     n_classes = len(classes)
 
-    ##### Compute ROC curve and ROC area for each class #####
+    # Compute ROC curve and ROC area for each class.
     fpr = dict()
     tpr = dict()
     roc_auc = dict()
@@ -281,7 +286,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     # Take the sorted indices.
     indices = list(roc_auc_ord.keys())
 
-    ##### Plot ROC curve #####
+    # Plot ROC curve.
     fig = plt.figure(figsize=(10,8))
     ax = fig.add_subplot(111)
     cm = plt.get_cmap('gist_rainbow')
@@ -292,7 +297,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
                                       ''.format(classes[i], roc_auc[i]))
 
 
-    ###### Compute micro-average ROC curve and ROC area #####
+    # Compute micro-average ROC curve and ROC area.
     fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
     roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
 
@@ -313,19 +318,26 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
 
 def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
     """
-    Extract a list of 4 keywords for the input text using 
+    Extract a list of top_n keywords for the input text using 
     some seed-keywords given by seed.
 
-    Arguments
+    Parameters
     ---------
-       text: text from which to extract keywords.
-       kw_model: KeyBERT model.
-       seed: seed keywords that might guide the extraction of keywords.
+    text : string
+           Text from which to extract keywords.
+    kw_model : keybert._model.KeyBERT
+               KeyBERT model.
+    seed : list of strings
+           Seed keywords that might guide the extraction of keywords.
+    top_n : int
+            Number of keywords to extract.
 
     Returns
     -------
-       keywords: list of the 4 extracted keywords.
+    keywords: list of strings
+              List of the top_n extracted keywords.
     """
+  
     max_n_grams = 1
     if seed == ['']: # if there are no words to use as seeds
         seed = None # switch off seed_keywords parameter below
@@ -334,7 +346,7 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], to
                                      seed_keywords = seed,
                                      stop_words='english',
                                      use_mmr=True,
-                                     top_n=top_n) # number of keywords
+                                     top_n=top_n)
     keywords = list(list(zip(*data))[0])
   
     return keywords
