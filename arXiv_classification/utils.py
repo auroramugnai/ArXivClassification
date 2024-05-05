@@ -266,7 +266,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     y_test : np.ndarray
              Section of the data that are used as test labels.
     y_score : np.ndarray
-              Decision function of X_test      
+              Decision function of X_test.      
     """
 
     n_classes = len(classes)
