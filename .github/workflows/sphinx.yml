@@ -1,1 +1,2 @@
-
+- name: Sphinx Build
+  uses: ammaraskar/sphinx-action@0.4
