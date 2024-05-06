@@ -37,8 +37,9 @@ jobs:
           pip install -r requirements.txt
       - name: Build HTML
         run: | 
-          cd docs/
-          make clean html
+          cd docs
+          rm -r source
+          sphinx-apidoc -o source ../arXiv_classification
           make html
       - name: Run ghp-import
         run: | 
