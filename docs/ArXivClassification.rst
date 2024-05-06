@@ -15,7 +15,7 @@ ArXivClassification.utils module
 Module contents
 ---------------
 
-.. automodule:: utils
+.. automodule:: ArXivClassification
    :members:
    :undoc-members:
    :show-inheritance:
