@@ -32,12 +32,11 @@ jobs:
         uses: actions/setup-python@v3
         with:
            python-version: ${{ matrix.python-version }}
-      # Runs a single command using the runners shell
-        
+          
       - name: Install dependencies
         run: |
-          pip install -e .
-          pip install sphinx pydata-sphinx-theme
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: Sphinx build
         run: |
           sphinx-build docs build
