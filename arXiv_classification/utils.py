@@ -42,7 +42,8 @@ def is_string_series(s: pd.Series) -> bool:
 
 def categories_as_lists(df: pd.DataFrame) -> None:
     """
-    Ensures that the category column contains lists of strings.
+    Ensures that the category column contains is a column
+    of lists of strings.
 
     Parameters
     ----------
@@ -57,7 +58,7 @@ def categories_as_lists(df: pd.DataFrame) -> None:
 
 def categories_as_strings(df: pd.DataFrame) -> None:
     """
-    Ensures that the category column contains strings.
+    Ensures that the category column is a column of strings.
 
     Parameters
     ----------
@@ -213,7 +214,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     mat : np.ndarray
           Confusion matrices given by the classification.
     classes : np.ndarray
-              All the possible categories.      
+              Classes of classification.      
     """
     num_mat = len(mat) # number of confusion matrices we want to plot
     
@@ -309,10 +310,10 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     ax.plot([0, 1], [0, 1], 'k--')
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver Operating Characteristic curves')
-    plt.legend(loc="lower right", fontsize='8', framealpha=0.5, ncol=2)
+    plt.xlabel('False Positive Rate', fontsize=10)
+    plt.ylabel('True Positive Rate', fontsize=10)
+    plt.tick_params(fontsize=10)
+    plt.legend(loc="lower right", fontsize='10', framealpha=0.5, ncol=2)
   
     return
 
