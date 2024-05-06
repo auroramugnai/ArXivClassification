@@ -38,7 +38,8 @@ jobs:
       - name: Build HTML
         run: | 
           cd docs/
-          make.bat html
+          make clear html
+          make html
       - name: Run ghp-import
         run: | 
-          ghp-import -n -p -f docs/build/html
+          ghp-import -n -p -f .
