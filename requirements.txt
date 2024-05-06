@@ -1,4 +1,4 @@
 # Defining the exact version will make sure things don't break
-sphinx<2
+sphinx == 7.3.7
 sphinx_rtd_theme<2.0.0
 ghp-import
