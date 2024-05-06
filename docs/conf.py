@@ -11,9 +11,9 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'arxiv'
-copyright = '2024, am ct'
-author = 'am ct'
+project = 'ArXivClassification'
+copyright = '2024, Aurora Mugnai & Chiara Tocchini'
+author = 'Aurora Mugnai & Chiara Tocchini'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
