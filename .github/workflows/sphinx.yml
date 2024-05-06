@@ -38,7 +38,6 @@ jobs:
       - name: Build HTML
         run: | 
           cd docs
-          rm -r source
           sphinx-apidoc -o source ../arXiv_classification
           make html
       - name: Run ghp-import
