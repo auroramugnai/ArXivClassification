@@ -318,9 +318,9 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     return
 
 
-def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
+def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) -> List[str]:
     """
-    Extract a list of top_n keywords for the input text using 
+    Extract a list of 4 keywords for the input text using 
     some seed-keywords given by seed.
 
     Parameters
@@ -331,13 +331,11 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], to
                KeyBERT model.
     seed : list of strings
            Seed keywords that might guide the extraction of keywords.
-    top_n : int
-            Number of keywords to extract.
 
     Returns
     -------
     keywords: list of strings
-              List of the top_n extracted keywords.
+              List of the 4 extracted keywords.
     """
   
     max_n_grams = 1
