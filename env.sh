@@ -1,1 +1,1 @@
-export PYTHONPATH=C:/ArXivClassification:$PYTHONPATH
+export PYTHONPATH=C:/arXiv_classification:$PYTHONPATH
