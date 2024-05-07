@@ -312,7 +312,7 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate', fontsize=10)
     plt.ylabel('True Positive Rate', fontsize=10)
-    plt.tick_params(fontsize=10)
+    plt.tick_params(size=10)
     plt.legend(loc="lower right", fontsize='10', framealpha=0.5, ncol=2)
   
     return
