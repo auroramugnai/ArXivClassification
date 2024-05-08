@@ -1,5 +1,6 @@
 # ArXivClassification :bookmark_tabs:
-An algorithm is developed to classify scientific articles based on their topic. For this purpose a fraction of the arXiv dataset (available at https://www.kaggle.com/datasets/Cornell-University/arxiv) is used.
+ArXivClassification can classify scientific articles based on their topic. 
+For this purpose a fraction of the arXiv dataset (available at https://www.kaggle.com/datasets/Cornell-University/arxiv) is used.
 
 
 ArXivClassification performs:
