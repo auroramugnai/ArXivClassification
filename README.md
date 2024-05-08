@@ -18,5 +18,5 @@ ArXivClassification performs:
 	- Using only abstracts and titles of the articles.
 
 
-[!TIP]
-Take a look at the documentation: https://auroramugnai.github.io/ArXivClassification/
+> [!TIP]
+> Take a look at the documentation: https://auroramugnai.github.io/ArXivClassification/
