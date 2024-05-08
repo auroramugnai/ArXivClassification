@@ -1,21 +1,15 @@
-# arXiv_classification
+An algorithm is developed to classify scientific articles based on their topic. For this purpose a fraction of the arXiv dataset available at https://www.kaggle.com/datasets/Cornell-University/arxiv is used.
 
-Si sviluppa un algoritmo che classifichi in base al loro argomento gli articoli scientifici contenuti in
-una frazione del dataset di arXiv.
+ArXivClassification performs:
 
+1) Supervised classification:
 
-1. Classificazione supervisionata:
+	• where the labels are the articles'lists of categories and the features are their abstracts and titles;
 
-	  • usando come labels le categorie associate a un articolo e come feature il testo
-	  risultante dall’unione di abstract e titolo;
-	
-	  • usando come labels le categorie associate agli articoli e come feature una lista di
-	  parole chiave estratta dal testo con un transformer;
-	  
-	  • usando come label una parola chiave e come feature il testo (restringendosi a una
-	  sola macrocategoria).
+	• where the labels are the articles'lists of categories and the features are their lists of keywords, extracted from abstract and title;
 
+	• where the labels are the articles'keywords (one per article) and the features are their abstracts and titles (narrowing down to a single macro-category).
 
-3. Non supervisionata:
+2) Unsupervised classification:
 
-	  • usando solamente l’abstract e il titolo dell'articolo.
+	• Using only abstracts and titles of the articles.
