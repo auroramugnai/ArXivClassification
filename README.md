@@ -16,3 +16,7 @@ ArXivClassification performs:
 2) **Unsupervised classification** :left_speech_bubble::
 
 	- Using only abstracts and titles of the articles.
+
+
+[!TIP]
+Take a look at the documentation: https://auroramugnai.github.io/ArXivClassification/
