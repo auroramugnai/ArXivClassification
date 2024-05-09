@@ -346,7 +346,7 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
                                      seed_keywords = seed,
                                      stop_words='english',
                                      use_mmr=True,
-                                     top_n=top_n)
+                                     top_n=4)
     keywords = list(list(zip(*data))[0])
   
     return keywords
