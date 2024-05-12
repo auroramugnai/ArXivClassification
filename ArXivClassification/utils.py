@@ -113,7 +113,8 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
 
     # Plot the histogram.
     df_counts.plot.bar(x=col, y='counts', 
-                       color='r', figsize=(20,5))
+                       color='r', figsize=(20,5), grid=None)
+    grid(False)
   
     return dict_counts
     
