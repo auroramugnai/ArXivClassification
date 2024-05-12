@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 
+from itertools import cycle
 from math import ceil
 import re
 from typing import TYPE_CHECKING
@@ -10,14 +11,17 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import normalize
 from sklearn.metrics import roc_curve, ConfusionMatrixDisplay, \
-                            multilabel_confusion_matrix, auc
-
+                            multilabel_confusion_matrix, auc, \
+                            average_precision_score, \
+                            precision_recall_curve, \
+                            PrecisionRecallDisplay \
 # Dependencies to import only for type checking.
 if TYPE_CHECKING:
     from keybert import KeyBERT
     import sklearn
     from sklearn.pipeline import Pipeline
     import spacy
+
 
 def is_string_series(s: pd.Series) -> bool:
     """
