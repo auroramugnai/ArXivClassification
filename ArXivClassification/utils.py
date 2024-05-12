@@ -394,7 +394,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     plt.show()
 
 
-def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) -> List[str]:
+def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
     """
     Extract a list of 4 keywords for the input text using 
     some seed-keywords given by seed.
@@ -407,6 +407,8 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
                KeyBERT model.
     seed : list of strings
            Seed keywords that might guide the extraction of keywords.
+    top_n : int
+            Number of keywords to extract
 
     Returns
     -------
@@ -422,7 +424,7 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) ->
                                      seed_keywords = seed,
                                      stop_words='english',
                                      use_mmr=True,
-                                     top_n=4)
+                                     top_n=top_n)
     keywords = list(list(zip(*data))[0])
   
     return keywords
