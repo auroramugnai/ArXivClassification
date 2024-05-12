@@ -318,6 +318,78 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     return
 
 
+def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
+    # 1) Precision, recall for each class.
+    precision = dict()
+    recall = dict()
+    average_precision = dict()
+    for i in range(len(classes)):
+        precision[i], recall[i], _ = precision_recall_curve(y_test[:, i],
+                                                            y_score[:, i])
+        average_precision[i] = average_precision_score(y_test[:, i],
+                                                      y_score[:, i])
+
+    # 2) A micro-average of precision and recall.
+    precision["micro"], recall["micro"], _ = precision_recall_curve(y_test.ravel(),
+                                                                    y_score.ravel())
+    average_precision["micro"] = average_precision_score(y_test,
+                                                        y_score,
+                                                        average="micro")
+
+    # 3) Plot.
+  
+    # Plot f1-scores.
+    _, ax = plt.subplots(figsize=(9, 8))
+    f_scores = np.linspace(0.2, 0.8, num=4)
+
+    lines, labels = [], []
+    for f_score in f_scores:
+        x = np.linspace(0.01, 1)
+        y = f_score * x / (2 * x - f_score)
+        (l,) = plt.plot(x[y >= 0], y[y >= 0], color="gray", alpha=0.2)
+        plt.annotate("$f_1$={0:0.1f}".format(f_score),
+                    xy=(0.85, y[45]+0.01),
+                    fontsize=13)
+
+    # Plot the micro-average.
+    display = PrecisionRecallDisplay(recall=recall["micro"],
+                                     precision=precision["micro"],
+                                     average_precision=average_precision["micro"])
+
+    display.plot(ax=ax, name="Micro-average", color="black")
+
+    # Plot a curve for each class.
+    colors = ["dodgerblue", "gray", "crimson", "deeppink",
+              "indigo", "turquoise", "orange"]
+    lines = ['-', ':', '--']
+
+    colorcyler = cycle(colors)
+    linecycler = cycle(lines)
+    
+    num_colors = len(colors)
+    
+    linestyle = 'solid'
+    for i in range(len(classes)):
+        display = PrecisionRecallDisplay(recall=recall[i],
+                                        precision=precision[i],
+                                        average_precision=average_precision[i])
+        if not i % num_colors:
+            linestyle = next(linecycler)
+
+        color = next(colorcyler)
+        display.plot(ax=ax, color=color, name=f"{classes[i]}", linestyle=linestyle)
+
+    # add the legend for the iso-f1 curves
+    handles, labels = display.ax_.get_legend_handles_labels()
+    handles.extend([l])
+    labels.extend(["iso-f1 curves"])
+
+    # set the legend and the axes
+    ax.legend(handles=handles, labels=labels, loc="lower left")
+    ax.set_ylim(0,1)
+    plt.show()
+
+
 def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str]) -> List[str]:
     """
     Extract a list of 4 keywords for the input text using 
