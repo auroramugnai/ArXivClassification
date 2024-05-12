@@ -116,51 +116,6 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
                        color='r', figsize=(20,5))
   
     return dict_counts
-
-
-def run_model(pipeline: sklearn.pipeline.Pipeline, 
-              X_train: pd.Series, X_test: pd.Series, 
-              y_train: np.ndarray, y_test: np.ndarray, 
-              multilabel: bool) -> Union[Tuple[np.ndarray, np.ndarray], np.ndarray]:
-    """
-    Fit the data and predict a classification.
-
-    Parameters
-    ---------
-    pipeline : sklearn.pipeline.Pipeline
-               Pipeline that perform the vectorization and the classification on
-               the given data.
-    X_train : pd.Series
-              Section of the data that are used as train features.
-    X_test : pd.Series
-             Section of the data that are used as test features.
-    y_train : numpy.ndarray
-              Section of the data that are used as train labels.
-    y_test : numpy.ndarray
-             Section of the data that are used as test labels.
-    multilabel : bool
-                 True if the prediction is multilabel,
-                 False otherwise.
-
-    Returns
-    -------
-    y_pred : numpy.ndarray
-             Predictions of the test data.
-    mat : numpy.ndarray
-          Confusion matrices.
-    """
-    # Fit of the train data using the pipeline.
-    pipeline.fit(X_train, y_train)
-    # Prediction on the test data.
-    y_pred = pipeline.predict(X_test)
-
-    if multilabel:
-        # Compute the confusion matrices.
-        mat = multilabel_confusion_matrix(y_test, y_pred)
-        return y_pred, mat
-        
-    else:
-        return y_pred
     
 
 def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
@@ -323,6 +278,19 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
 
 
 def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
+    """
+    Compute and plot the Precision-Recall for each category, the micro-average
+    and the F1 score. 
+        
+    Parameters
+    ---------
+    classes : np.ndarray
+              All the possible categories.  
+    y_test : np.ndarray
+             Section of the data that are used as test labels.
+    y_score : np.ndarray
+              Decision function of X_test.   
+    """
     # 1) Precision, recall for each class.
     precision = dict()
     recall = dict()
