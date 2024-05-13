@@ -184,7 +184,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     num_cells = num_rows*num_cols
     rest = num_cells - num_mat
 
-    fig, axes = plt.subplots(num_rows, num_cols, figsize=(8,12))
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=(12,12))
     axes = axes.ravel() # get flattened axes
 
     # Iterate over the cells.
@@ -194,7 +194,9 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
             # Plot the matrix.
             disp = ConfusionMatrixDisplay(normalize(mat[i], axis=0, norm='l1'))
             disp.plot(ax=axes[i])
-            disp.ax_.set_title(f'{classes[i]}')
+            disp.ax_.set_title(f"{classes[i]}")
+            disp.ax_.set_xlabel("Predicted", fontsize=13)
+            disp.ax_.set_ylabel("True", fontsize=13)
 
             # Only show x and y labels for the plots in the border.
             first_i_of_last_row = num_rows*num_cols - num_cols
@@ -206,17 +208,12 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
                 disp.ax_.set_ylabel('') # do not set the y label
 
             disp.im_.colorbar.remove() # remove it to put it after
-
-            ax.set_xlabel(fontsize=13)
-            ax.set_ylabel(fontsize=13)
-            ax.tick_params(labelsize=13)
+            disp.ax_.grid(False)
+            disp.ax_.tick_params(labelsize=13)
 
         else: # delete axes in excess
             fig.delaxes(axes[i])
 
-
-    plt.subplots_adjust(wspace=0.15, hspace=0.1)
-    ax.grid(False)
     fig.colorbar(disp.im_, ax=axes)
     plt.show()
   
