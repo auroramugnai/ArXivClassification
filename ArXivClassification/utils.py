@@ -364,7 +364,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     num_colors = len(colors)
     
     linestyle = '-'
-    for i, idx in enumerate(indices):ù
+    for i, idx in enumerate(indices):
         display = PrecisionRecallDisplay(recall=recall[idx],
                                         precision=precision[idx],
                                         average_precision=average_precision[idx])
