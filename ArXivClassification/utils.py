@@ -243,14 +243,6 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     for i in range(n_classes):
         fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
         roc_auc[i] = auc(fpr[i], tpr[i])
-
-    # Compute micro-average ROC curve and ROC area.
-    fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
-    roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
-
-    ax.plot(fpr["micro"], tpr["micro"], color='k',
-            label='micro-average ROC curve (area = {0:0.2f})'
-                  ''.format(roc_auc["micro"]))
   
     # Sort the dictionary based on the area value.
     roc_auc_ord = dict(sorted(roc_auc.items(), key=lambda item: item[1]))
@@ -261,7 +253,16 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     # Plot ROC curve.
     fig = plt.figure(figsize=(8,8))
     ax = fig.add_subplot(111)
-  
+
+    # Compute micro-average ROC curve and ROC area.
+    fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
+    roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
+
+    ax.plot(fpr["micro"], tpr["micro"], color='k',
+            label='micro-average ROC curve (area = {0:0.2f})'
+                  ''.format(roc_auc["micro"]))
+
+    # Do the same for each class.
     colors = ["dodgerblue", "gray", "crimson", "deeppink",
               "indigo", "turquoise", "orange"]
     lines = ['-', ':', '--']
