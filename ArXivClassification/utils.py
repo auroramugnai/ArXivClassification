@@ -212,7 +212,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
 
 
     plt.subplots_adjust(wspace=0.15, hspace=0.1)
-    plt.grid(visible=False)
+    ax.grid(False)
     fig.colorbar(disp.im_, ax=axes)
     plt.show()
   
