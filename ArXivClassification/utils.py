@@ -315,8 +315,15 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
         precision[i], recall[i], _ = precision_recall_curve(y_test[:, i],
                                                             y_score[:, i])
         average_precision[i] = average_precision_score(y_test[:, i],
-                                                      y_score[:, i])
+                                                       y_score[:, i])
+      
+    # Sort the dictionary based on the average_precision value.
+    avg_precision_ord = dict(sorted(average_precision.items(), key=lambda item: item[1]))
 
+    # Take the sorted indices.
+    indices = list(avg_precision_ord.keys())
+
+  
     # 2) A micro-average of precision and recall.
     precision["micro"], recall["micro"], _ = precision_recall_curve(y_test.ravel(),
                                                                     y_score.ravel())
@@ -357,14 +364,14 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     num_colors = len(colors)
     
     linestyle = '-'
-    for i in range(len(classes)):
-        display = PrecisionRecallDisplay(recall=recall[i],
-                                        precision=precision[i],
-                                        average_precision=average_precision[i])
+    for i, idx in enumerate(indices):ù
+        display = PrecisionRecallDisplay(recall=recall[idx],
+                                        precision=precision[idx],
+                                        average_precision=average_precision[idx])
         if not i % num_colors:
             linestyle = next(linecycler)
             
-        display.plot(ax=ax, color=next(colorcyler), name=f"{classes[i]}", 
+        display.plot(ax=ax, color=next(colorcyler), name=f"{classes[idx]}", 
                      linestyle=linestyle)
 
     # add the legend for the iso-f1 curves
