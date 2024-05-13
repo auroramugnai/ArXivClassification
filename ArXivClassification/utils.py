@@ -268,7 +268,6 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     for i, idx in enumerate(indices):
 
         if not i % num_colors:
-            print(i)
             linestyle = next(linecycler)
 
         ax.plot(fpr[idx], tpr[idx], color=next(colorcyler), linestyle=linestyle,
@@ -357,7 +356,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     
     num_colors = len(colors)
     
-    linestyle = next(linecycler)
+    linestyle = '-'
     for i in range(len(classes)):
         display = PrecisionRecallDisplay(recall=recall[i],
                                         precision=precision[i],
