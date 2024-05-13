@@ -310,7 +310,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     y_score : np.ndarray
               Decision function of X_test.   
     """
-    # 1) Precision, recall for each class.
+    # Precision, recall for each class.
     precision = dict()
     recall = dict()
     average_precision = dict()
@@ -325,16 +325,13 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
 
     # Take the sorted indices.
     indices = list(avg_precision_ord.keys())
-
   
-    # 2) A micro-average of precision and recall.
+    # Micro-average of precision and recall.
     precision["micro"], recall["micro"], _ = precision_recall_curve(y_test.ravel(),
                                                                     y_score.ravel())
     average_precision["micro"] = average_precision_score(y_test,
-                                                        y_score,
-                                                        average="micro")
-
-    # 3) Plot.
+                                                         y_score,
+                                                         average="micro")
   
     # Plot f1-scores.
     _, ax = plt.subplots(figsize=(8, 8))
@@ -377,12 +374,12 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
         display.plot(ax=ax, color=next(colorcyler), name=f"{classes[idx]}", 
                      linestyle=linestyle)
 
-    # add the legend for the iso-f1 curves
+    # Add the legend for the iso-f1 curves.
     handles, labels = display.ax_.get_legend_handles_labels()
     handles.extend([l])
     labels.extend(["iso-f1 curves"])
 
-    # set the legend and the axes
+    # Set the legend and the axes.
     ax.legend(handles=handles, labels=labels, loc="lower left", prop={'size': 13})
     ax.set_xlim(-0.01,1.01)
     ax.set_ylim(-0.01,1.01)
@@ -412,7 +409,7 @@ def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], to
     Returns
     -------
     keywords: list of strings
-              List of the 4 extracted keywords.
+              List of the top_n extracted keywords.
     """
   
     max_n_grams = 1
