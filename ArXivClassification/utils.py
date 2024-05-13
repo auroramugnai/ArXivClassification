@@ -249,14 +249,27 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     indices = list(roc_auc_ord.keys())
 
     # Plot ROC curve.
-    fig = plt.figure(figsize=(10,8))
+    fig = plt.figure(figsize=(8,8))
     ax = fig.add_subplot(111)
-    cm = plt.get_cmap('gist_rainbow')
-    ax.set_prop_cycle('color', [cm(1.*i/n_classes) for i in range(n_classes)])
+  
+    colors = ["dodgerblue", "gray", "crimson", "deeppink",
+              "indigo", "turquoise", "orange"]
+    lines = ['-', ':', '--']
 
-    for i in indices:
-        ax.plot(fpr[i], tpr[i], label='{0} (area = {1:0.2f})'
-                                      ''.format(classes[i], roc_auc[i]))
+    colorcyler = cycle(colors)
+    linecycler = cycle(lines)
+
+    num_colors = len(colors)
+
+    linestyle = '-'
+    for i, idx in enumerate(indices):
+
+        if not i % num_colors:
+            print(i)
+            linestyle = next(linecycler)
+
+        ax.plot(fpr[idx], tpr[idx], color=next(colorcyler), linestyle=linestyle,
+                label='{0} (area = {1:0.2f})'.format(classes[idx], roc_auc[idx]))
 
 
     # Compute micro-average ROC curve and ROC area.
@@ -267,13 +280,13 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
             label='micro-average ROC curve (area = {0:0.2f})'
                   ''.format(roc_auc["micro"]))
 
-    ax.plot([0, 1], [0, 1], 'k--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate', fontsize=10)
-    plt.ylabel('True Positive Rate', fontsize=10)
-    plt.tick_params(size=10)
-    plt.legend(loc="lower right", fontsize='10', framealpha=0.5, ncol=2)
+    ax.set_xlim(-0.01,1.01)
+    ax.set_ylim(-0.01,1.01)
+    ax.set_xlabel('False Positive Rate', fontsize=13)
+    ax.set_ylabel('True Positive Rate', fontsize=13)
+    ax.tick_params(labelsize=13)
+    ax.legend(loc="lower right", fontsize='14', framealpha=0.5, ncol=1)
+    plt.show()
   
     return
 
@@ -312,7 +325,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     # 3) Plot.
   
     # Plot f1-scores.
-    _, ax = plt.subplots(figsize=(9, 8))
+    _, ax = plt.subplots(figsize=(8, 8))
     f_scores = np.linspace(0.2, 0.8, num=4)
 
     lines, labels = [], []
@@ -321,7 +334,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
         y = f_score * x / (2 * x - f_score)
         (l,) = plt.plot(x[y >= 0], y[y >= 0], color="gray", alpha=0.2)
         plt.annotate("$f_1$={0:0.1f}".format(f_score),
-                    xy=(0.85, y[45]+0.01),
+                    xy=(0.83, y[45]+0.01),
                     fontsize=13)
 
     # Plot the micro-average.
@@ -341,16 +354,16 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     
     num_colors = len(colors)
     
-    linestyle = 'solid'
+    linestyle = next(linecycler)
     for i in range(len(classes)):
         display = PrecisionRecallDisplay(recall=recall[i],
                                         precision=precision[i],
                                         average_precision=average_precision[i])
         if not i % num_colors:
             linestyle = next(linecycler)
-
-        color = next(colorcyler)
-        display.plot(ax=ax, color=color, name=f"{classes[i]}", linestyle=linestyle)
+            
+        display.plot(ax=ax, color=next(colorcyler), name=f"{classes[i]}", 
+                     linestyle=linestyle)
 
     # add the legend for the iso-f1 curves
     handles, labels = display.ax_.get_legend_handles_labels()
@@ -358,9 +371,14 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     labels.extend(["iso-f1 curves"])
 
     # set the legend and the axes
-    ax.legend(handles=handles, labels=labels, loc="lower left")
-    ax.set_ylim(0,1)
+    ax.legend(handles=handles, labels=labels, loc="lower left", prop={'size': 13})
+    ax.set_xlim(-0.01,1.01)
+    ax.set_ylim(-0.01,1.01)
+    ax.set_xlabel('Recall', fontsize=13)
+    ax.set_ylabel('Precision', fontsize=13)
+    ax.tick_params(labelsize=13)
     plt.show()
+
 
 
 def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
