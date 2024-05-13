@@ -115,6 +115,9 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     ax = df_counts.plot.bar(x=col, y='counts', 
                             color='crimson', figsize=(20,5))
     ax.grid(False)
+    ax.set_xlabel('Category', fontsize=13)
+    ax.set_ylabel('Counts', fontsize=13)
+    ax.tick_params(labelsize=13)
   
     return dict_counts
     
