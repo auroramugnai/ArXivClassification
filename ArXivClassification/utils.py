@@ -184,7 +184,7 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
     num_cells = num_rows*num_cols
     rest = num_cells - num_mat
 
-    fig, axes = plt.subplots(num_rows, num_cols, figsize=(20,20))
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=(8,12))
     axes = axes.ravel() # get flattened axes
 
     # Iterate over the cells.
@@ -206,6 +206,10 @@ def plot_confusion_matrices(mat: np.ndarray, classes: np.ndarray) -> None:
                 disp.ax_.set_ylabel('') # do not set the y label
 
             disp.im_.colorbar.remove() # remove it to put it after
+
+            ax.set_xlabel(fontsize=13)
+            ax.set_ylabel(fontsize=13)
+            ax.tick_params(labelsize=13)
 
         else: # delete axes in excess
             fig.delaxes(axes[i])
