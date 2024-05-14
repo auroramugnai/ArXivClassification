@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 
 def is_string_series(s: pd.Series) -> bool:
     """
-    Checks whether s series contains only strings.
+    Checks whether `s` series contains only strings.
 
     Parameters
     ----------
@@ -77,21 +77,20 @@ def categories_as_strings(df: pd.DataFrame) -> None:
 
 def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
     """
-    Computes the occurrences of the lists in the col column
-    of the df dataframe and plots histograms. Everything is
-    repeated for the exploded dataframe.
+    Computes the occurrences of the lists in the `col` column
+    of the `df` dataframe and plots histograms.
 
     Parameters
     ---------
     df : pd.DataFrame
-         Dataframe that contains the column col.
+         Dataframe that contains the column `col`.
     col : string
           Name of the column whose elements must be counted.
 
     Returns
     -------
     dict_counts : dictionary 
-                  Its keys are the names contained in col's lists 
+                  Its keys are the names contained in `col`'s lists 
                   and its values are their occurrences.
     """
 
@@ -230,11 +229,11 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     Parameters
     ---------
     classes : np.ndarray
-              All the possible categories.  
+              Classes of classification.
     y_test : np.ndarray
-             Section of the data that are used as test labels.
+             Test labels.
     y_score : np.ndarray
-              Decision function of X_test.      
+              Target scores.   
     """
 
     n_classes = len(classes)
@@ -307,8 +306,7 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     y_test : np.ndarray
              Test labels.
     y_score : np.ndarray
-              Target scores, as returned by decision_function
-              on a classifier.
+              Target scores.
     """
     # Precision, recall for each class.
     precision = dict()
