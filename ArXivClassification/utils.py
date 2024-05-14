@@ -123,7 +123,7 @@ def plot_df_counts(df: pd.DataFrame, col: str) -> dict:
 
 def text_cleaner(text: str, nlp: spacy.lang.en.English) -> str:
     """
-    After joining interrupted words and tokenizing the text, 
+    After joining interrupted words and tokenizing `text`, 
     lemmatize, remove bad words, special characters, punctuation
     and Spacy stopwords.
 
