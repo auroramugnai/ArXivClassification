@@ -298,17 +298,17 @@ def ROC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
 
 def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
     """
-    Compute and plot the Precision-Recall for each category, the micro-average
-    and the F1 score. 
+    Plot the Precision-Recall curves. 
         
     Parameters
     ---------
     classes : np.ndarray
-              All the possible categories.  
+              The classes used in the classification.  
     y_test : np.ndarray
-             Section of the data that are used as test labels.
+             Test labels.
     y_score : np.ndarray
-              Decision function of X_test.   
+              Target scores, as returned by decision_function
+              on a classifier.
     """
     # Precision, recall for each class.
     precision = dict()
@@ -392,8 +392,8 @@ def PRC(classes: np.ndarray, y_test: np.ndarray, y_score: np.ndarray) -> None:
 
 def extract_kws(text: str, kw_model: keybert._model.KeyBERT, seed: List[str], top_n: int) -> List[str]:
     """
-    Extract a list of 4 keywords for the input text using 
-    some seed-keywords given by seed.
+    Extract a list of `top_n` keywords for the input text
+    using some seed-keywords given by `seed`.
 
     Parameters
     ---------
