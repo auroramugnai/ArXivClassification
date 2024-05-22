@@ -1,5 +1,3 @@
-import re
-
 import en_core_web_md
 import spacy
 import pandas as pd
