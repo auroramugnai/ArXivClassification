@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArXivClassification package &mdash; ArXivClassification  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ArXivClassification" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ArXivClassification
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">ArXivClassification</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ArXivClassification package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ArXivClassification.utils">ArXivClassification.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.PRC"><code class="docutils literal notranslate"><span class="pre">PRC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.ROC"><code class="docutils literal notranslate"><span class="pre">ROC()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.categories_as_lists"><code class="docutils literal notranslate"><span class="pre">categories_as_lists()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.categories_as_strings"><code class="docutils literal notranslate"><span class="pre">categories_as_strings()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.extract_kws"><code class="docutils literal notranslate"><span class="pre">extract_kws()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.is_string_series"><code class="docutils literal notranslate"><span class="pre">is_string_series()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.plot_confusion_matrices"><code class="docutils literal notranslate"><span class="pre">plot_confusion_matrices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.plot_df_counts"><code class="docutils literal notranslate"><span class="pre">plot_df_counts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ArXivClassification.utils.text_cleaner"><code class="docutils literal notranslate"><span class="pre">text_cleaner()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-ArXivClassification">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ArXivClassification</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">ArXivClassification</a></li>
+      <li class="breadcrumb-item active">ArXivClassification package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ArXivClassification.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="arxivclassification-package">
+<h1>ArXivClassification package<a class="headerlink" href="#arxivclassification-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-ArXivClassification.utils">
+<span id="arxivclassification-utils-module"></span><h2>ArXivClassification.utils module<a class="headerlink" href="#module-ArXivClassification.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.PRC">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">PRC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#PRC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.PRC" title="Link to this definition"></a></dt>
+<dd><p>Plot the Precision-Recall curves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classes</strong> (<em>np.ndarray</em>) – The classes used in the classification.</p></li>
+<li><p><strong>y_test</strong> (<em>np.ndarray</em>) – Test labels.</p></li>
+<li><p><strong>y_score</strong> (<em>np.ndarray</em>) – Target scores.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.ROC">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">ROC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#ROC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.ROC" title="Link to this definition"></a></dt>
+<dd><p>Plot the ROC curves and compute their areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classes</strong> (<em>np.ndarray</em>) – Classes of classification.</p></li>
+<li><p><strong>y_test</strong> (<em>np.ndarray</em>) – Test labels.</p></li>
+<li><p><strong>y_score</strong> (<em>np.ndarray</em>) – Target scores.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.categories_as_lists">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">categories_as_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#categories_as_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.categories_as_lists" title="Link to this definition"></a></dt>
+<dd><p>Ensures that the category column contains is a column
+of lists of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe to be checked.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.categories_as_strings">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">categories_as_strings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#categories_as_strings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.categories_as_strings" title="Link to this definition"></a></dt>
+<dd><p>Ensures that the category column is a column of strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe to be checked.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.extract_kws">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">extract_kws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">keybert._model.KeyBERT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#extract_kws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.extract_kws" title="Link to this definition"></a></dt>
+<dd><p>Extract a list of <cite>top_n</cite> keywords for the input text
+using some seed-keywords given by <cite>seed</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – Text from which to extract keywords.</p></li>
+<li><p><strong>kw_model</strong> (<em>keybert._model.KeyBERT</em>) – KeyBERT model.</p></li>
+<li><p><strong>seed</strong> (<em>list</em><em> of </em><em>strings</em>) – Seed keywords that might guide the extraction of keywords.</p></li>
+<li><p><strong>top_n</strong> (<em>int</em>) – Number of keywords to extract</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>keywords</strong> – List of the top_n extracted keywords.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.is_string_series">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">is_string_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#is_string_series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.is_string_series" title="Link to this definition"></a></dt>
+<dd><p>Checks whether <cite>s</cite> series contains only strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>pd.Series</em>) – Series to be checked.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.plot_confusion_matrices">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">plot_confusion_matrices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#plot_confusion_matrices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.plot_confusion_matrices" title="Link to this definition"></a></dt>
+<dd><p>Plot the confusion matrices normalizing on columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>np.ndarray</em>) – Confusion matrices given by the classification.</p></li>
+<li><p><strong>classes</strong> (<em>np.ndarray</em>) – Classes of classification.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.plot_df_counts">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">plot_df_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#plot_df_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.plot_df_counts" title="Link to this definition"></a></dt>
+<dd><p>Computes the occurrences of the lists in the <cite>col</cite> column
+of the <cite>df</cite> dataframe and plots histograms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Dataframe that contains the column <cite>col</cite>.</p></li>
+<li><p><strong>col</strong> (<em>string</em>) – Name of the column whose elements must be counted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dict_counts</strong> – Its keys are the names contained in <cite>col</cite>’s lists
+and its values are their occurrences.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ArXivClassification.utils.text_cleaner">
+<span class="sig-prename descclassname"><span class="pre">ArXivClassification.utils.</span></span><span class="sig-name descname"><span class="pre">text_cleaner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nlp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">spacy.lang.en.English</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/ArXivClassification/utils.html#text_cleaner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ArXivClassification.utils.text_cleaner" title="Link to this definition"></a></dt>
+<dd><p>After joining interrupted words and tokenizing <cite>text</cite>,
+lemmatize, remove bad words, special characters, punctuation
+and Spacy stopwords.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em>) – Text to be cleaned.</p></li>
+<li><p><strong>nlp</strong> (<em>spacy.lang.en.English</em>) – Spacy model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>clean_tokens</strong> – Cleaned text.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-ArXivClassification">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ArXivClassification" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="ArXivClassification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Aurora Mugnai &amp; Chiara Tocchini.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
